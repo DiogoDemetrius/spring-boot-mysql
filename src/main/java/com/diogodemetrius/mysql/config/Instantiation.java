@@ -21,9 +21,9 @@ public class Instantiation implements CommandLineRunner {
         userRepository.deleteAll();
         
         // Use null para o id, permitindo que o banco de dados gere automaticamente
-        User maria = new User(null, "Maria Brown", "maria@gmail.com");
-        User alex = new User(null, "Alex Green", "alex@gmail.com");
-        User bob = new User(null, "Bob Grey", "bob@gmail.com");
+        User maria = new User("1", "Maria Brown", "maria@gmail.com");
+        User alex = new User("2", "Alex Green", "alex@gmail.com");
+        User bob = new User("3", "Bob Grey", "bob@gmail.com");
         
         // Usar saveAll para salvar todos de uma vez
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
