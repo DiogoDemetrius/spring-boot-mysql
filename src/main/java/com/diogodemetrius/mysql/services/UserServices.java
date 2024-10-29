@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.diogodemetrius.mysql.domain.User;
+import com.diogodemetrius.mysql.dto.UserDTO;
 import com.diogodemetrius.mysql.exception.ObjectNotFoundException;
 import com.diogodemetrius.mysql.repository.UserRepository;
 
@@ -25,5 +26,14 @@ public class UserServices {
     public User findById(String id) {
         Optional<User> user = repo.findById(id);
         return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+    }
+    
+    //Metodo POST Usuário
+    public User insert(User obj) {
+    	return repo.save(obj);
+    }
+    
+    public User fromDTO(UserDTO objDto) {
+    	return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
 }
